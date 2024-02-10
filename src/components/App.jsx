@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { Routes, Route } from 'react-router-dom'
 import Header from "./Header";
 import Form from "./tasks/Form";
 import TasksList from "./tasks/TasksList";
@@ -19,7 +19,7 @@ function App() {
     fetch(SERVER_URL)
       .then((response) => response.json())
       .then((data) => {
-        if( !data.error ) {
+        if (!data.error) {
           setTasks(data.results);
         }
         else {
@@ -34,7 +34,7 @@ function App() {
 
   const handleClickCompleteTask = (taskId) => {
     const tasksClone = [...tasks];
-    const clickedTask = tasksClone.find( task => task.id === taskId );
+    const clickedTask = tasksClone.find(task => task.id === taskId);
     clickedTask.completed = !clickedTask.completed;
 
     setTasks(tasksClone);
@@ -70,19 +70,23 @@ function App() {
 
   return (
     <div>
-      <Header />
-      <main className="main">
-        <Form
-          onInput={handleInputNewTask}
-          onClickAdd={handleClickAddTask}
-          newTaskValue={newTask}
-        />
-
-        <TasksList tasks={tasks} onClickCompleted={handleClickCompleteTask} />
-
-        <TipsList />
-      </main>
-    </div>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Header />
+            <main className="main">
+              <Form
+                onInput={handleInputNewTask}
+                onClickAdd={handleClickAddTask}
+                newTaskValue={newTask}
+              />
+              <TasksList tasks={tasks} onClickCompleted={handleClickCompleteTask} />
+              <TipsList />
+            </main>
+          </>
+        } />
+      </Routes>
+    </div >
   );
 }
 
