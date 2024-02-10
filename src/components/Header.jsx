@@ -1,4 +1,4 @@
-import NavMenu from "./NavMenu";
+import NavMenu from "../components/navMenu/NavMenu";
 
 function Header() {
   return (
