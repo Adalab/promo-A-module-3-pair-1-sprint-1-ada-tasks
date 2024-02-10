@@ -1,3 +1,3 @@
-# Proyecto plantilla
+# Ejercicio de AdaTasks para el pair programming del módulo 3
 
-¡Rellena este fichero!
+Aquí tenemos una aplicación web para llevar nuestra lista de tareas pendientes.
